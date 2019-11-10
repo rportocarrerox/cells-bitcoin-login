@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../cells-credentials-form/cells-credentials-form.html">
+<link rel="import" href="../cells-molecule-spinner/cells-molecule-spinner.html">
+<link rel="import" href="cells-bitcoin-login-styles.html">
+<dom-module id="cells-bitcoin-login">
+  <template>
+    <style include="cells-bitcoin-login-styles cells-bitcoin-login-shared-styles"></style>
+    <slot></slot>
+    <!-- Login form -->
+    <cells-credentials-form hidden$="[[_loading]]"
+
+      clear-id-icon="[[clearIcon]]"
+      clear-login-name-icon="[[clearIcon]]"
+      clear-pwd-icon="[[clearIcon]]"
+
+      toggle-pwd-icon="[[showPwdIcon]]"
+      toggle-pwd-icon-toggled="[[hidePwdIcon]]"
+
+      user-name="{{userName}}"
+      user-password="{{userPassword}}"
+      user-id="[[userId]]"
+      gender = "{{gender}}"
+      on-login="_onFormSubmit"
+    >
+    </cells-credentials-form>
+
+    <template is="dom-if" if="[[_loading]]">
+      <cells-molecule-spinner
+        message="[[_loadingText]]"
+        finish="[[loggedIn]]"
+      >
+      </cells-molecule-spinner>
+    </template>
+  </template>
+  <script src="cells-bitcoin-login.js"></script>
+</dom-module>
