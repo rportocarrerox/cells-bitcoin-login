@@ -54,7 +54,7 @@
 
     _onFormSubmit(evt) {
       this._loading = !this._loading;
-      this.dispatchEvent(new CustomEvent('request-access', {
+      this.dispatchEvent(new CustomEvent('bitcoint-price-changed', {
         composed: true,
         bubbles: true,
         detail: evt.detail
